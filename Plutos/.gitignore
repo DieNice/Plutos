@@ -82,6 +82,6 @@ target/
 *.pyc
 __pycache__/
 settings.py
-venv/
+
 .env
 db.sqlite3
