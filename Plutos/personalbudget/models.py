@@ -1,13 +1,13 @@
 from django.db import models
 import sys
 
+
 class User(models.Model):
     fullname = models.CharField(max_length=50, null=False)
     login = models.CharField(max_length=50, null=False)
     password = models.CharField(max_length=50, null=False)
     mail = models.EmailField(null=False)
-    phone = models.IntegerField(max_length=11, null=True)
-    is_personal = models.BooleanField(null=True)
+    phone = models.CharField(max_length=11, null=True)
     is_organization = models.BooleanField(null=True)
     avatar = models.ImageField(null=True)
 
