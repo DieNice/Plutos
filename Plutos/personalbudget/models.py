@@ -1,5 +1,5 @@
 from django.db import models
-
+import sys
 
 class User(models.Model):
     fullname = models.CharField(max_length=50, null=False)
