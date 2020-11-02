@@ -98,3 +98,35 @@ Taxes - taxes in the state. budget
 ```
 Net profit is profit net of taxes from gross profit.
 ```
+
+### Balance sheet
+| Assets (current) | Liabilities |
+| ---- | ---- |
+| | |
+| | |
+| Assets (non-current) | **Total liabilties** |
+| | |
+| | |
+| **Total** | Equity |
+| | |
+| | |
+| | **Total equity** |
+```
+Assets are money or things that a company 
+owns and that can create value.
+```
+```s
+Reverse Assets - Assets that are expected to be 
+converted to cash in less than a year
+```
+```
+Non-current assets - assets that the company is 
+expected to have for more than 1 year
+```
+```
+Liabilities are the value of company 
+assets owned by people outside the company
+```
+```
+Equity is the value of the company's assets owned by its owners
+```
