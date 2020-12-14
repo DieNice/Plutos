@@ -25,7 +25,7 @@ def userpopulate():
     password = fake_data.password()
     mail = fake_data.email()
     is_organization = bool(random.choice([True, False]))
-    phone = '89246784082'
+    phone = '89996789910'
     avatar = random.choice(avatars)
 
     User.objects.create(fullname=fullname, login=login, password=password, mail=mail, phone=phone,

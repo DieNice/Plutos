@@ -20,7 +20,7 @@ class Personalbudget(models.Model):
     month = MonthField(null=True)
 
     def __unicode__(self):
-        return unicode(self.month)
+        return str(self.month)
 
 
 class Income(models.Model):
