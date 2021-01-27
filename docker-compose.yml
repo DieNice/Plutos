@@ -28,11 +28,14 @@ services:
     networks:
       - plutos-backend
   plutos-backend-django:
+    build: .
     image: dienice/plutos:0.1
     container_name: "plutos-backend-django"
+    volumes:
+      - ./:/www/Plutos
     ports:
       - "127.0.0.1:8001:8001"
-    command: bash -c "Plutos/manage.py migrate && python3 Plutos/manage.py generatefixtures 50 && python3 Plutos/manage.py collectstatic && gunicorn -c "./Plutos/gunicorn_config.py" Plutos.wsgi"
+    command: bash -c "pip install -r requirements.txt && gunicorn -c "./Plutos/gunicorn_config.py" Plutos.wsgi"
     restart: unless-stopped
     depends_on:
       - plutos-backend-postgresql
