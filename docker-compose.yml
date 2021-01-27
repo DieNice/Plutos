@@ -1,0 +1,44 @@
+version: "3.5"
+
+
+services:
+  plutos-backend-postgresql:
+    image: postgres:12.1-alpine
+    container_name: "plutos-backend-postgresql"
+    volumes:
+      - /databases/plutos/postgres:/var/lib/postgresql/data
+    env_file:
+      - /env/plutos/postgresql/.env
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - plutos-backend
+
+  plutos-backend-nginx:
+    image: nginx
+    container_name: "plutos-backend-nginx"
+    volumes:
+      - /configs/plutos/nginx:/etc/nginx
+    ports:
+      - "127.0.0.1:5000:80"
+    restart: unless-stopped
+    depends_on:
+      - plutos-backend-django
+    networks:
+      - plutos-backend
+  plutos-backend-django:
+    image: dienice/plutos:0.1
+    container_name: "plutos-backend-django"
+    ports:
+      - "127.0.0.1:8001:8001"
+    command: bash -c "Plutos/manage.py migrate && python3 Plutos/manage.py generatefixtures 50 && python3 Plutos/manage.py collectstatic && gunicorn -c "./Plutos/gunicorn_config.py" Plutos.wsgi"
+    restart: unless-stopped
+    depends_on:
+      - plutos-backend-postgresql
+    networks:
+      - plutos-backend
+
+networks:
+  plutos-backend:
+    driver: bridge
